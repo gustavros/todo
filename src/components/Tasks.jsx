@@ -6,15 +6,19 @@ export const Tasks = ({ tasks, setTasks }) => {
   const inputRef = useRef(null);
 
   function addNewTask() {
-    const newTask = {
-      id: uuidv4(),
-      title: inputRef.current.value,
-      done: false,
-    };
+    if (inputRef.current.value === "") {
+      alert("Por favor, digite o nome da trarefa");
+    } else {
+      const newTask = {
+        id: uuidv4(),
+        title: inputRef.current.value,
+        done: false,
+      };
 
-    setTasks([...tasks, newTask]);
-    inputRef.current.value = "";
-    inputRef.current.focus();
+      setTasks([...tasks, newTask]);
+      inputRef.current.value = "";
+      inputRef.current.focus();
+    }
   }
 
   return (
