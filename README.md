@@ -21,8 +21,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Criar e excluir tarefas
 - [x] Responsivo
 - [x] Todo componetizado
-- [ ] Animações nas svgs
-- [ ] Adicionar função de "concluído" usando checkbox
+- [x] Adicionar função de "concluído" usando checkbox
 - [ ] Adicionar tarefas no LocalStorage
 - [ ] Modo light (😐)
 
