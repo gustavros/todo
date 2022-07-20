@@ -1,7 +1,9 @@
 import React from "react";
 
 export const TasksInfo = ({ tasks }) => {
-  const hasTask = tasks.length
+  const hasTask = tasks.length;
+
+  const hasDone = tasks.filter((task) => task.done).length; // ! fazendo o filtro para ver se tem alguma tarefa concluída, pegando o length da array de tarefas concluídas
 
   return (
     <div className="w-full">
@@ -15,7 +17,7 @@ export const TasksInfo = ({ tasks }) => {
         <p className="text-[#a2a2a2] font-bold text-sm">
           Concluídas
           <span className="font-bold bg-zinc-800 text-white m-1 p-1 rounded-full">
-            0
+            {hasDone}
           </span>
         </p>
       </div>

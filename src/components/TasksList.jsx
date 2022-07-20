@@ -1,12 +1,24 @@
 import { Trash } from "phosphor-react";
 import React from "react";
+import { Tasks } from "./Tasks";
 import clipboard from "/src/assets/images/clipboard.png";
 
 export const TasksList = ({ handleTask, handleChangeTask }) => {
-  
   function handleDeleteTask(id) {
     const newTasks = handleTask.filter((task) => task.id !== id);
     handleChangeTask(newTasks);
+  }
+
+  function handleMarkTask(id) { // ! marque tarefa como concluída
+    const newTaskList = [...handleTask]; // ! nova array com as todas as tarefas
+
+    newTaskList.map((task) => { // ! map para percorrer todas as tarefas
+      if (task.id === id) { // ! se o id for igual ao id da tarefa que foi clicada
+        task.done = !task.done; // ! toggle para marcar como concluída/não concluída
+      }
+    });
+
+    handleChangeTask(newTaskList); // ! modificando o estado e atualizando a lista de arrays
   }
 
   const hasTask = handleTask.length > 0;
@@ -38,7 +50,10 @@ export const TasksList = ({ handleTask, handleChangeTask }) => {
                 key={task.id}
                 className="bg-[#262626] flex items-center justify-between m-4 p-4 gap-4 rounded-lg transi"
               >
-                <input type="checkbox" name="" id="" />
+                <input
+                  type="checkbox"
+                  onChange={() => handleMarkTask(task.id)}
+                />
                 <p>{task.title}</p>
 
                 <Trash
